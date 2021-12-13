@@ -1,0 +1,53 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="360" d:DesignHeight="600"
+             x:Class="Test.Views.NovaObjednavkaWindowView">
+
+	<StackPanel HorizontalAlignment="Center">
+		<TextBlock FontSize="15" Margin="0,20,0,20" FontWeight="Bold" 
+				   TextAlignment="Center" Text="Tvoje pizza" />
+
+		<StackPanel Orientation="Horizontal" >
+			<TextBlock VerticalAlignment="Center" Text="Pizza:" />
+
+			<ComboBox Name="Select" Margin="10,0,0,0"  Items ="{Binding Menu}" SelectedItem="{Binding SelectedPizza}">
+				<ComboBox.ItemTemplate>
+					<DataTemplate>
+						<TextBlock Text="{Binding Name}" />
+					</DataTemplate>
+				</ComboBox.ItemTemplate>
+			</ComboBox>
+		</StackPanel>
+
+		<TextBlock FontSize="15" Margin="0,20,0,5" FontWeight="Bold" 
+				   TextAlignment="Center" Text="Přídavky" />
+
+		<StackPanel>
+			<ItemsControl Items="{Binding SelectedPizza.Pridavky}">
+				<ItemsControl.ItemTemplate>
+					<DataTemplate>
+						<CheckBox Margin="0,0,0,0"
+								  IsChecked="{Binding IsChecked}"
+								  Content="{Binding Name}"/>
+					</DataTemplate>
+				</ItemsControl.ItemTemplate>
+			</ItemsControl>
+			
+		</StackPanel>
+
+		<StackPanel>
+			<Button Width="160" Margin="0,10,0,5" HorizontalContentAlignment="Center" 
+					Command="{Binding Odeslat}"
+					Content="Odeslat objednávku"/>
+		</StackPanel>
+
+		<StackPanel HorizontalAlignment="Center">
+			<Button Width="100" Margin="0,10,0,5" Command="{Binding $parent[Window].DataContext.Zpet}"
+					HorizontalContentAlignment="Center" Content="Zpět"/>
+		</StackPanel>
+
+	</StackPanel>
+
+</UserControl>

@@ -1,0 +1,8 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Test.Views.MainWindow"
+        Icon="/Assets/pizza-logo.ico"
+        Width="330" Height="500"
+        Title="Pizza konfigurátor"
+        Content="{Binding Content}">
+</Window>
